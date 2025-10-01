@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Crow App",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "main.cpp",
+                "-o", "main.exe",
+                "-std=c++14",
+                "-I", "${workspaceFolder}/include",
+                "-lws2_32",
+                "-lmswsock",
+                "-lpthread"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Run Crow App",
+            "type": "shell",
+            "command": "${workspaceFolder}/main.exe",
+            "dependsOn": "Build Crow App",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+    ]
+}

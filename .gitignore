@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Prerequisites
 *.d
 
@@ -39,3 +40,9 @@
 
 # debug information files
 *.dwo
+=======
+# 忽略
+*.exe
+
+asio-1.36.0
+>>>>>>> 7283ed7 (c++ Crow 基础框架)
