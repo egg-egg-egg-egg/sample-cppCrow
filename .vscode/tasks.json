@@ -2,13 +2,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Crow App",
+            "label": "Build Sample",
             "type": "shell",
             "command": "g++",
             "args": [
-                "main.cpp",
-                "-o", "main.exe",
-                "-std=c++14",
+                "${input:sampleDir}/*.cpp",
+                "-o", "${input:sampleDir}/app.exe",
+                "-std=c++17",
                 "-I", "${workspaceFolder}/include",
                 "-lws2_32",
                 "-lmswsock",
@@ -21,14 +21,36 @@
             "problemMatcher": ["$gcc"]
         },
         {
-            "label": "Run Crow App",
+            "label": "Build and Run Sample",
             "type": "shell",
-            "command": "${workspaceFolder}/main.exe",
-            "dependsOn": "Build Crow App",
+            "command": "${input:sampleDir}/app.exe",
+            "dependsOn": "Build Sample",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Run Sample",
+            "type": "shell",
+            "command": "${input:sampleDir}/app.exe",
             "group": {
                 "kind": "test",
                 "isDefault": true
             }
+        },
+    ],
+    "inputs": [
+        {
+            "id": "sampleDir",
+            "type": "pickString",
+            "description": "选择要编译运行的示例",
+            "options": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/samples/hello_world",
+                "${workspaceFolder}/samples/json_api"
+            ],
+            "default": "${workspaceFolder}"
         }
     ]
 }

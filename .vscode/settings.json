@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "*.tcpp": "code-runner-output",
+        "sstream": "cpp",
+        "fstream": "cpp"
+    }
+}
